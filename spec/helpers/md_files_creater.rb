@@ -3,6 +3,7 @@ class MDFilesCreater
   DIR = File.join(File.dirname(__FILE__), '../md_docs')
 
   def self.build num
+    Dir.mkdir(DIR) unless File.directory?(DIR)
     self.clear
     paths = []
     num.times do |i|
