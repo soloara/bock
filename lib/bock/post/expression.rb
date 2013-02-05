@@ -3,12 +3,12 @@ require 'erb'
 
 module Bock
 
-  module Resource
+  module Post
     
     module Expression
       
-      def render text
-        template = ERB.new text
+      def render text=nil
+        template = ERB.new (text || self.erb)
         @content = to_html
         template.result(binding)
       end

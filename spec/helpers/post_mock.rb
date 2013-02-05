@@ -1,9 +1,11 @@
 require 'ostruct'
-require 'bock/resource/expression'
+require 'bock/post/expression'
 
-class ResourceMock
+class PostMock
   
-  include Bock::Resource::Expression
+  include Bock::Post::Expression
+  
+  attr_accessor :erb
   
   ERB_1 = <<-EOF
     <h1><%= @options.title %></h1>
@@ -25,11 +27,11 @@ class ResourceMock
   end
   
   def self.build num
-    resources = []
+    posts = []
     num.times do |i|
-      resources << ResourceMock.new(index: i)
+      posts << PostMock.new(index: i)
     end
-    resources
+    posts
   end
   
 end
